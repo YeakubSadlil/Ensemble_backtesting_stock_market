@@ -1,11 +1,11 @@
 <h1 align="center">
-  📈 Ensemble Strategy for Backtesting Stock Market 📊
+  📈 Ensemble Strategy for Backtesting Stock Market <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="Python" width="45" height="45" style="vertical-align: -10px;" title="Python"/>
 </h1>
 <p align="center"> 
 <strong>This repository contains An Ensemble Strategy for Backtesting Stock Price, Combining Bollinger Bands and LSTM Models.</strong>
 </p>
 
-## 📚 Table of Contents
+<!-- ## 📚 Table of Contents
 
 - [📖 User Manual](#📖-user-manual)
   - [🔧 Setup](#setup)
@@ -15,8 +15,21 @@
   - [📊 Interpreting Results](#interpreting-results)
 - [🏗️ Project Structure](#🏗️-project-structure)
 - [🛠️ Our Approach](#🛠️-our-approach)
-- [🔮 Future Works](#🔮-future-works)
-- [📊 Asset Categories](#📂-asset-categories)
+- [🔮 Future Works](#-future-works)
+- [📊 Asset Categories](#-asset-categories) -->
+
+##  Table of Contents
+
+- [ 📖 User Manual](#-user-manual)
+  - [ Setup](#setup)
+  - [ Install Dependencies](#install-dependencies)
+  - [ Data Ingestion](#data-ingestion)
+  - [ Running the Notebook](#️running-the-notebook)
+  - [ Interpreting Results](#interpreting-results)
+- [️ Project Structure](#️-project-structure)
+- [️ Our Approach](#️-our-approach)
+- [ Future Works](#-future-works)
+- [ Asset Categories](#-asset-categories)
 
 ## 📖 User Manual
 
@@ -60,7 +73,7 @@
 - **Backtesting**: Utilized the `zipline` library to backtest our strategy and evaluate the performance. 🧪
 
 ## 🔮 Future Works
-- **Dataset Choosing**: We have trained the model on S&P 500 data, but can created an market index with the 50 assets we have used for backtesting.
+- **Dataset Choosing**: We have trained the LSTM model on S&P 500 data, but can be created an market index with the 50 assets that we have used for backtesting.
 - **Order Strategy**: As the market is a bull market we went only long positions but with proper short selling strategy more profit can be generated.
 - **Fine-Tuning Models**: Continuously refine and optimize the Bollinger Bands window size and LSTM models for better prediction accuracy. 🔧
 - **Risk Management**: Implement risk management strategies to minimize potential losses like as stop loos and take profit.
