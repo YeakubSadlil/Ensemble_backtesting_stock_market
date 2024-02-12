@@ -1,9 +1,38 @@
+<!-- <div align="right">
+  <img align="center" src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Blue_Python_3.8_Shield_Badge.svg" alt="python 3.8" height="20" width="60" />
+</div> -->
+
+
+![Static Badge](https://img.shields.io/badge/python-3.8-a?style=plastic&logo=python&color=blue)
+![Static Badge](https://img.shields.io/badge/zipline--reloaded-3.0.3-a?style=plastic&labelColor=red)
+![Static Badge](https://img.shields.io/badge/os-ubuntu-a?style=plastic&logo=ubuntu&labelColor=blue)
+![Static Badge](https://img.shields.io/badge/quantstats-0.0.62-a?style=plastic&labelColor=blue&color=purple)
+![Static Badge](https://img.shields.io/badge/keras-2.15.0-a?style=plastic&labelColor=blue)
+![Static Badge](https://img.shields.io/badge/jupyterlab-4.0.9-a?style=plastic&logo=jupyter&labelColor=blue)
+
+
+
+
 <h1 align="center">
   📈 Ensemble Strategy for Backtesting Stock Price <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="Python" width="45" height="45" style="vertical-align: -14px;" title="Python"/>
 </h1>
 <p align="center"> 
 <strong>This repository contains An Ensemble Strategy for Backtesting Stock Price, Combining Bollinger Bands and LSTM Models.</strong>
 </p>
+
+<!-- <div align="right">
+  <details>
+    <summary><b>Technical Environment</b></summary>
+    <div align="right">
+      <img align="center" src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Blue_Python_3.8_Shield_Badge.svg" alt="python 3.8" height="25" width="70" />
+    </div>
+    <div align="right">
+      <img align="center" src="https://miro.medium.com/v2/resize:fit:1400/format:webp/0*7mcenkTaprqVx17y.jpg" alt="python 3.8" height="25" width="70" style="vertical-align: -18px;/>
+    </div>
+
+    
+  </details>
+</div> -->
 
 ##  📚 Table of Contents
 
