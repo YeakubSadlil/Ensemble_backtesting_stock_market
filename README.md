@@ -4,6 +4,18 @@
 <p align="center"> 
 <strong>This repository contains An Ensemble Strategy for Backtesting Stock Price, Combining Bollinger Bands and LSTM Models.</strong>
 </p>
+<div align="right">
+  <details>
+    <summary><b>Technical Environment</b></summary>
+
+    <p>
+      <img src="https://img.shields.io/badge/python-3.8-blue.svg?style=for-the-badge&logo=python">
+      <img src="https://img.shields.io/badge/jupyter_notebook-x.x-blue.svg?style=for-the-badge&logo=Jupyter%20Notebook">
+    </p>
+
+  </details>
+</div>
+
 
 ##  📚 Table of Contents
 
