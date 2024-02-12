@@ -14,7 +14,7 @@
 
 
 <h1 align="center">
-  📈 Ensemble Strategy for Backtesting Stock Price <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="Python" width="45" height="45" style="vertical-align: -14px;" title="Python"/>
+  📈 Ensemble Strategy for Backtesting Stock Price
 </h1>
 <p align="center"> 
 <strong>This repository contains An Ensemble Strategy for Backtesting Stock Price, Combining Bollinger Bands and LSTM Models.</strong>
