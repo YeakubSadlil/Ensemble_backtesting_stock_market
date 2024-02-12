@@ -1,22 +1,22 @@
 <h1 align="center">
-  📈 Ensemble Strategy for Backtesting Stock Market 📊
+  📈 Ensemble Strategy for Backtesting Stock Price <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="Python" width="45" height="45" style="vertical-align: -14px;" title="Python"/>
 </h1>
 <p align="center"> 
 <strong>This repository contains An Ensemble Strategy for Backtesting Stock Price, Combining Bollinger Bands and LSTM Models.</strong>
 </p>
 
-## 📚 Table of Contents
+##  📚 Table of Contents
 
-- [📖 User Manual](#📖-user-manual)
-  - [🔧 Setup](#setup)
-  - [🔨 Install Dependencies](#install-dependencies)
-  - [📥 Data Ingestion](#data-ingestion)
-  - [🏃‍♂️ Running the Notebook](#running-the-notebook)
-  - [📊 Interpreting Results](#interpreting-results)
-- [🏗️ Project Structure](#🏗️-project-structure)
-- [🛠️ Our Approach](#🛠️-our-approach)
-- [🔮 Future Works](#🔮-future-works)
-- [📊 Asset Categories](#📂-asset-categories)
+- [ 📖 User Manual](#-user-manual)
+  - [ Setup](#setup)
+  - [ Install Dependencies](#install-dependencies)
+  - [ Data Ingestion](#data-ingestion)
+  - [ Running the Notebook](#️running-the-notebook)
+  - [ Interpreting Results](#interpreting-results)
+- [️ 🏗️ Project Structure](#️-project-structure)
+- [️ 🛠️ Our Approach](#️-our-approach)
+- [ 🔮 Future Works](#-future-works)
+- [ 📂 Asset Categories](#-asset-categories)
 
 ## 📖 User Manual
 
@@ -26,7 +26,8 @@
 ```pip install -r requirements.txt```
 3. **📥 Data Ingestion**: Ingest your own data with zipline (the strategy can accept multi assets).
 4. **🏃‍♂️ Running the Notebook**: Open the repo and run `run.ipynb` and customize your backtesting parameters stock symbols, time period, investment settings like amount and number of stocks to buy at each buy signal etc.
-5. **📊 Interpreting Results**: A ```quantstats``` report will be generated at the end by ```gs.plots(results)``` .Analyze the generated plots and results to assess the strategy's performance.
+5. **📊 Interpreting Results**: A ```quantstats``` report will be generated automatically at the end by ```gs.plots(results)``` .<br>
+Analyze the generated plots and results to assess the strategy's performance on the selected assets.
 
 ## 🏗️ Project Structure
 
@@ -55,14 +56,16 @@
 - **LSTM Model**: Developed an LSTM model to predict stock price of the next day based on the previous 50 days of stock prices. 
     - Used it as a filter with Bollinger Bands to generate signals.
     - Trained the model on S&P 500 data from 2013 to 2020 and tested it on data from 2023 to 2024. 📅
-- **Asset Categorization**: Backtested our strategy on 50 assets from 10 different sectors (2018-2022) to add diversification and evaluate its performance. Check [Asset Lists](#📂-asset-categories) or the  [Data](https://github.com/YeakubSadlil/Ensemble_backtesting_stock_market/blob/01acf517e821f63eaabbcf972c3fbc51a196a4b3/Data/sp50) section to see the list of assets.  
+- **Asset Categorization**: Backtested our strategy on 50 assets from 10 different sectors (2018-2022) to add diversification and evaluate its performance. Check [Asset Lists](#-asset-categories) or the  [Data](https://github.com/YeakubSadlil/Ensemble_backtesting_stock_market/blob/01acf517e821f63eaabbcf972c3fbc51a196a4b3/Data/sp50) section to see the list of assets.  
 - **Module Development**: Developed a module to generate signals (`generate_signals.py`), which is imported into the `run.ipynb`. It will return buy/sell/hold signals as 1, -1, 0 respectively.
 - **Backtesting**: Utilized the `zipline` library to backtest our strategy and evaluate the performance. 🧪
+- **Performance Analysis**: Our ensemble strategy is pretty close to the Bollinger Bands individual strategy, but it has outperformed the benchmark (S&P 500) in terms of CAGR, Sharpe Ratio, Portfolio Value while bactested with 50 assets from 2018-22.<br>
+It coudn't beat the benchmark while backtested with some single assets for out sample data but performed well for the ```AAPL``` stock.
 
 ## 🔮 Future Works
-- **Dataset Choosing**: We have trained the model on S&P 500 data, but can created an market index with the 50 assets we have used for backtesting.
+- **Dataset Choosing**: We have trained the LSTM model on S&P 500 data, but can be created an market index with the 50 assets that we have used for backtesting.
 - **Order Strategy**: As the market is a bull market we went only long positions but with proper short selling strategy more profit can be generated.
-- **Fine-Tuning Models**: Continuously refine and optimize the Bollinger Bands window size and LSTM models for better prediction accuracy. 🔧
+- **Fine-Tuning Models**: Continuously refine and optimize the Bollinger Bands window size and LSTM models for better prediction accuracy. The LSTM model underperforming while predicting based on past 100 and 150 days.LSTM may suffer from vanishing gradients and can be improved with ```Gated Recurrent Units (GRUs)``` or ```Bidirectional LSTMs```.🔧
 - **Risk Management**: Implement risk management strategies to minimize potential losses like as stop loos and take profit.
 
 ## 📂 Asset Categories
