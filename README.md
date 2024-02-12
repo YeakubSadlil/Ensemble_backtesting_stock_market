@@ -9,7 +9,7 @@
     <summary><b>Technical Environment</b></summary>
 
     <p>
-      <img src="https://img.shields.io/badge/python-3.8-blue.svg?style=for-the-badge&logo=python">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Blue_Python_3.8_Shield_Badge.svg">
       <img src="https://img.shields.io/badge/jupyter_notebook-x.x-blue.svg?style=for-the-badge&logo=Jupyter%20Notebook">
     </p>
 
