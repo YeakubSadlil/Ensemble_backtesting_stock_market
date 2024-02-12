@@ -5,8 +5,7 @@
 
 ![Static Badge](https://img.shields.io/badge/python-3.8-a?style=plastic&logo=python&color=blue)
 ![Static Badge](https://img.shields.io/badge/zipline--reloaded-3.0.3-a?style=plastic&labelColor=red)
- 
-![Static Badge](https://img.shields.io/badge/platforms-Ubuntu-a?style=plastic&logo=ubuntu&color=blue)
+![Static Badge](https://img.shields.io/badge/os-ubuntu-a?style=plastic&logo=ubuntu&labelColor=blue)
 ![Static Badge](https://img.shields.io/badge/quantstats-0.0.62-a?style=plastic&labelColor=blue&color=purple)
 ![Static Badge](https://img.shields.io/badge/keras-2.15.0-a?style=plastic&labelColor=blue)
 ![Static Badge](https://img.shields.io/badge/jupyterlab-4.0.9-a?style=plastic&logo=jupyter&labelColor=blue)
