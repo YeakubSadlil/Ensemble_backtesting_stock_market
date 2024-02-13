@@ -3,12 +3,13 @@
 </div> -->
 
 
-![Static Badge](https://img.shields.io/badge/python-3.8-a?style=plastic&logo=python&color=blue)
+![Static Badge](https://img.shields.io/badge/python-3.10-a?style=plastic&logo=python)
 ![Static Badge](https://img.shields.io/badge/zipline--reloaded-3.0.3-a?style=plastic&labelColor=red)
 ![Static Badge](https://img.shields.io/badge/os-ubuntu-a?style=plastic&logo=ubuntu&labelColor=blue)
 ![Static Badge](https://img.shields.io/badge/quantstats-0.0.62-a?style=plastic&labelColor=blue&color=purple)
 ![Static Badge](https://img.shields.io/badge/keras-2.15.0-a?style=plastic&labelColor=blue)
-![Static Badge](https://img.shields.io/badge/jupyterlab-4.0.9-a?style=plastic&logo=jupyter&labelColor=blue)
+![Static Badge](https://img.shields.io/badge/jupyter--notebook-7-a?style=plastic&logo=jupyter&labelColor=blue)
+
 
 
 
@@ -47,16 +48,71 @@
 - [ 🔮 Future Works](#-future-works)
 - [ 📂 Asset Categories](#-asset-categories)
 
-## 📖 User Manual
-
+<!-- ## 📖 User Manual
+### 1. Manual Installation
 1. **🔧 Setup**: Clone or download, get a copy of this repository<br>
 ```git clone https://github.com/YeakubSadlil/Ensemble_backtesting_stock_market.git```
 2. **🔨 Install Dependencies**: Install the required dependencies using the following command<br>
+make sure that you have `python 3.10` installed or create a new environment.<br>
 ```pip install -r requirements.txt```
 3. **📥 Data Ingestion**: Ingest your own data with zipline (the strategy can accept multi assets).
 4. **🏃‍♂️ Running the Notebook**: Open the repo and run `run.ipynb` and customize your backtesting parameters stock symbols, time period, investment settings like amount and number of stocks to buy at each buy signal etc.
 5. **📊 Interpreting Results**: A ```quantstats``` report will be generated automatically at the end by ```gs.plots(results)``` .<br>
 Analyze the generated plots and results to assess the strategy's performance on the selected assets.
+
+### 2. Docker Installation
+1. **Prerequisites:** Verify you have `Docker` installed and running.
+1. **🔧 Setup**: Clone or download, get a copy of this repository
+2. **Build the Docker Image**: ```docker build -t ensemble-backtest-stockprice .```
+3. **Run the Docker Container**: ```docker run -d -p 8888:8888 --name my_backtest_container ensemble-backtest-stockprice```
+4. **Get the Jupyter Notebook Token**: ```docker exec -it my_backtest_container /bin/bash```<br>
+```jupyter server list ```
+5. **Access Jupyter Notebook**: Open your web browser and go to ```http://localhost:8888.``` Paste the copied token when prompted(If no token is required then skip the step)
+
+From the jupyter notebook run `run.ipynb`. -->
+
+## 📖 User Manual
+
+### 1. Manual Installation
+
+Follow these steps for a manual installation:
+
+1. **Clone the Repository**: Get a copy of this repository on your local machine with the following command:<br>
+```git clone https://github.com/YeakubSadlil/Ensemble_backtesting_stock_market.git```
+
+2. **Install Dependencies**: Make sure you have `Python 3.10` installed. Then, install the required dependencies using the following command:<br>
+```pip install -r requirements.txt```
+
+3. **Data Ingestion**: Ingest your own data with Zipline.Threre is a default data ingestion available on the notebook. Note that the strategy can accept multiple assets.
+
+4. **Run the Notebook**: Open the `run.ipynb` file in the repository and customize your backtesting parameters such as stock symbols, time period, and investment settings like amount and number of stocks to buy at each buy signal.
+
+5. **Interpret Results**: A `quantstats` report will be generated automatically at the end by `gs.plots(results)`.<br>
+Analyze the generated plots and results to assess the strategy's performance on the selected assets.
+
+### 2. Docker Installation
+
+If you have Docker installed, you can use it to run the project to avoid setting the environment or installing dependencies:
+
+1. **Verify Docker Installation**: Make sure Docker is installed and running on your machine.
+
+2. **Clone the Repository**: Get a copy of this repository on your local machine with the following command:<br>
+```git clone https://github.com/YeakubSadlil/Ensemble_backtesting_stock_market.git```
+
+3. **Build the Docker Image**: Run the following command to build the Docker image:<br>
+```docker build -t ensemble-backtest-stockprice .```
+
+4. **Run the Docker Container**: Start a new Docker container with the image using the following command:<br>
+```docker run -d -p 8888:8888 --name my_backtest_container ensemble-backtest-stockprice```
+
+5. **Get the Jupyter Notebook Token**: Run the following commands to get the Jupyter Notebook token:<br>
+```docker exec -it my_backtest_container /bin/bash```<br>
+```jupyter server list ```
+
+6. **Access Jupyter Notebook**: Open your web browser and go to `http://localhost:8888`. Paste the copied token when prompted. (If no token is required, you can skip step 5).
+
+From the Jupyter Notebook, run `run.ipynb` to start the project.
+
 
 ## 🏗️ Project Structure
 
