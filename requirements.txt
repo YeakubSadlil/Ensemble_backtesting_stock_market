@@ -2,10 +2,10 @@ numpy==1.26.1
 pandas==2.1.3
 yfinance==0.2.33
 quantstats==0.0.62
+tensorflow==2.15.0
 keras==2.15.0
 matplotlib==3.8.2
 matplotlib-inline==0.1.6
+notebook
 zipline-reloaded==3.0.3
-jupyterlab==4.0.9
 scikit-learn==1.3.2
-python==3.8
