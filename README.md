@@ -151,8 +151,35 @@ From the Jupyter Notebook, run `run.ipynb` to start the project.
 - **Asset Categorization**: Backtested our strategy on 50 assets from 10 different sectors (2018-2022) to add diversification and evaluate its performance. Check [Asset Lists](#-asset-categories) or the  [Data](https://github.com/YeakubSadlil/Ensemble_backtesting_stock_market/blob/01acf517e821f63eaabbcf972c3fbc51a196a4b3/Data/sp50) section to see the list of assets.  
 - **Module Development**: Developed a module to generate signals (`generate_signals.py`), which is imported into the `run.ipynb`. It will return buy/sell/hold signals as 1, -1, 0 respectively.
 - **Backtesting**: Utilized the `zipline` library to backtest our strategy and `quantstats` to evaluate the performance. 🧪
-- **Performance Analysis**: Our ensemble strategy is pretty close to the Bollinger Bands individual strategy, but it has outperformed the benchmark (S&P 500) in terms of CAGR, Sharpe Ratio, Portfolio Value while bactested with 50 assets from 2018-22.<br>
+
+**LSTM Model Architecture**:
+
+![LSTM Model](./ML%20Models/lstm_12_p50_ckp_13_24_e150.keras.png)
+
+
+## Performance Analysis: 
+Our ensemble strategy is pretty close to the Bollinger Bands individual strategy, but it has outperformed the benchmark (S&P 500) in terms of CAGR, Sharpe Ratio, Portfolio Value while bactested with 50 assets from 2018-22.<br>
 It coudn't beat the benchmark while backtested with some single assets for out sample data but performed well for the ```AAPL``` stock.
+- Ensemble Notebook: We tuned our ensemble model in Google Colab for faster training. The notebook is available [here](https://colab.research.google.com/drive/1O85HUaClIuqZwkVQjVrm8eyI1YPINQ29?usp=sharing).
+
+**The table below shows the performance comparison on in-sample data**
+| Metric | Benchmark | Bollinger Bands | LSTM + Bollinger Ensemble |
+|--------|-----------|-----------------|--------------------------|
+| Start Period | 2018-03-19 | 2018-03-19 | 2018-03-19 |
+| End Period | 2022-12-30 | 2022-12-30 | 2022-12-30 |
+| Risk-Free Rate | 0.0% | 0.0% | 0.0% |
+| Time in Market | 100.0% | 100.0% | 100.0% |
+| Cumulative Return | 39.52% | 50.92% | 54.21% |
+| CAGR | 4.92% | 6.12% | 6.45% |
+| Sharpe | 0.43 | 0.46 | 0.49 |
+| Max Drawdown | -33.92% | -43.2% | -44.06% |
+| Avg. Drawdown | -2.18% | -2.79% | -2.79% |
+| Volatility (ann.) | 22.01% | 25.56% | 25.21% |
+| Calmar | 0.15 | 0.14 | 0.15 |
+| Beta | - | 1.02 | 0.99 |
+| Alpha | - | 0.02 | 0.03 |
+| Correlation | - | 87.43% | 86.79% |
+| Treynor Ratio | - | 50.14% | 54.52% |
 
 ## 🔮 Future Works
 - **Dataset Choosing**: We have trained the LSTM model on S&P 500 data, but can be created an market index with the 50 assets that we have used for backtesting.
