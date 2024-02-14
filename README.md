@@ -159,7 +159,7 @@ It coudn't beat the benchmark while backtested with some single assets for out s
 - **Order Strategy**: As the market is a bull market we went only long positions but with proper short selling strategy more profit can be generated.
 - **Fine-Tuning Models**: Continuously refine and optimize the Bollinger Bands window size and LSTM models for better prediction accuracy. The LSTM model underperforming while predicting based on past 100 and 150 days.LSTM may suffer from vanishing gradients and can be improved with `Attention mechanisms`, `Stacking more layers` or ```Bidirectional LSTMs``` etc.🔧
 - **Risk Management**: Implement risk management strategies to minimize potential losses like as stop loos and take profit.
-
+- **Meta-Labeling Strategy**: In his book Advances in Financial Machine Learning, Dr.Lopez de Prad describes a Meta-labeling technique that uses an array of new Ensemble learning techniques to enhance machine learning strategies. Hudson & Thames a research group expands on these techniques and showed some implementation ideas in [youtube video.](https://youtu.be/1fYzABjsNFk?si=G6HPDBBNlsNotGk5)
 ## 📂 Asset Categories
 | Industrials | Health Care | Information Technology | Financials | Materials | Consumer Staples | Energy | Communication Services | Utilities | Real Estate |
 |-------------|-------------|------------------------|------------|-----------|------------------|--------|-----------------------|-----------|-------------|
