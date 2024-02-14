@@ -54,9 +54,9 @@ Follow these steps for a manual installation:
 2. **Install Dependencies**: Make sure you have `Python 3.10` installed. Then, install the required dependencies using the following command:<br>
 ```pip install -r requirements.txt```
 
-3. **Data Ingestion**: Ingest your own data with Zipline.There is a default data ingestion available on the notebook. Note that the strategy can accept multiple assets.
+3. **Data Ingestion**: Ingest your custom data with Zipline. There is a default data ingestion available on the notebook. Note that the strategy can accept multiple assets.
 
-4. **Run the Notebook**: Open the `run.ipynb` file in the repository and customize your backtesting parameters such as stock symbols, time period, and investment settings like amount and number of stocks to buy at each buy signal.
+4. **Run the Notebook**: Open the `run.ipynb` file in the repository and customize your backtesting parameters such as stock symbols, time period, and investment settings like the amount and number of stocks to buy at each buy signal.
 
 5. **Interpret Results**: A `quantstats` report will be generated automatically at the end by `gs.plots(results)`.<br>
 Analyze the generated plots and results to assess the strategy's performance on the selected assets.
@@ -82,7 +82,7 @@ If you have Docker installed, you can use it to run the project to avoid setting
 
 6. **Get the Jupyter Notebook Token**: Run the following commands to get the Jupyter Notebook token:<br>
 ```docker exec -it my_backtest_container /bin/bash```<br>
-After that, run the following command inside from the container that you run:<br>
+After that, run the following command inside the container that you run:<br>
 ```jupyter server list ```<br>
 It will show you a link with a token. Copy the token only from the link and paste it in the browser jupyter notebook prompt.
 
@@ -102,7 +102,7 @@ From the Jupyter Notebook, run `run.ipynb` to start the project.
     │
     ├── 📄 generate_signal.py  <- Module to generate the buy/sell/hold signals
     │
-    ├── 📝 requirements.txt    <- List of of required python packages
+    ├── 📝 requirements.txt    <- List of required python packages
     │
     ├── 🐳 Dockerfile          <- Dockerfile for building the Docker image
     │
@@ -112,11 +112,11 @@ From the Jupyter Notebook, run `run.ipynb` to start the project.
 ## 🛠️ Our Approach
 
 - **Ensemble Strategy**: We combined Bollinger Bands and LSTM models to predict stock prices and generate signals.
-    - When LSTM model predicts the tomorrow's stock price is higher than the current price and Bollinger Bands lower band is also higher than the current price, then we generate a buy signal (Long Position)
-    - When LSTM model predicts the tomorrow's stock price is lower than the current price and Bollinger Bands upper band is also lower than the current price, then we generate a sell signal.
+    - When the LSTM model predicts that tomorrow's stock price is higher than the current price and the Bollinger's lower band is also higher than the current price, then we generate a buy signal (Long Position)
+    - When the LSTM model predicts that tomorrow's stock price is lower than the current price and Bollinger's upper band is also lower than the current price, then we generate a sell signal.
     - Otherwise, we generate a hold signal.
 - **Bollinger Bands**: Utilized the Bollinger Bands model to generate buy/sell signals based on the stock's price volatility with a default window of 20 days.
-- **LSTM Model**: Developed an LSTM model to predict stock price of the next day based on the previous 50 days of stock prices. 
+- **LSTM Model**: Developed an LSTM model to predict the stock price of the next day based on the previous 50 days of stock prices. 
     - Used it as a filter with Bollinger Bands to generate signals.
     - Trained the model on S&P 500 data from 2013 to 2020 and tested it on data from 2023 to 2024. 📅
 - **Asset Categorization**: Backtested our strategy on 50 assets from 10 different sectors (2018-2022) to add diversification and evaluate its performance. Check [Asset Lists](#-asset-categories) or the  [Data](https://github.com/YeakubSadlil/Ensemble_backtesting_stock_market/blob/01acf517e821f63eaabbcf972c3fbc51a196a4b3/Data/sp50) section to see the list of assets.  
@@ -149,20 +149,20 @@ It coudn't beat the benchmark while backtested with some single assets for out s
 | Calmar | 0.15 | 0.14 | 0.15 |
 
 ## 🔮 Drawbacks & Future Works
-- **Dataset Choosing**: We have trained the LSTM model on S&P 500 data, but can be created an market index with the 50 assets that we have used for backtesting.
-- **Order Strategy**: As the market is a bull market we went only long positions but with proper short selling strategy more profit can be generated.
-- **Fine-Tuning Models**: Continuously refine and optimize the Bollinger Bands window size and LSTM models for better prediction accuracy. The LSTM model underperforming while predicting based on past 100 and 150 days.LSTM may suffer from vanishing gradients and can be improved with `Attention mechanisms`, `Stacking more layers` or ```Bidirectional LSTMs``` etc.🔧
-- **Risk Management**: Implement risk management strategies to minimize potential losses like as stop loos and take profit.
-- **Meta-Labeling Strategy**: In his book Advances in Financial Machine Learning, Dr.Lopez de Prad describes a Meta-labeling technique that uses an array of new Ensemble learning techniques to enhance machine learning strategies. Hudson & Thames ,a financial research group, expanded on these techniques and showed some implementation ideas in a [youtube video.](https://youtu.be/1fYzABjsNFk?si=G6HPDBBNlsNotGk5)
+- **Dataset Choosing**: We have trained the LSTM model on S&P 500 data, but a market index can be created with the 50 assets we have used for backtesting.
+- **Order Strategy**: As the market is a bull market we went only for long positions but with a proper short-selling strategy more profit can be generated.
+- **Fine-Tuning Models**: Continuously refine and optimize the Bollinger Bands window size and LSTM models for better prediction accuracy. The LSTM model was underperforming while predicting based on the past 100 and 150 days.LSTM may suffer from vanishing gradients and can be improved with `Attention mechanisms`, `Stacking more layers` or ```Bidirectional LSTMs``` etc.🔧
+- **Risk Management**: Implement risk management strategies to minimize potential losses such as stop loss and take profit.
+- **Meta-Labeling Strategy**: In his book Advances in Financial Machine Learning, Dr.Lopez de Prad describes a Meta-labeling technique that uses an array of new Ensemble learning techniques to enhance machine learning strategies. Hudson & Thames, a financial research group, expanded on these techniques and showed some implementation ideas in a [youtube video.](https://youtu.be/1fYzABjsNFk?si=G6HPDBBNlsNotGk5)
 ## 📂 Asset Categories
-We have backtested our strategy on 50 assets from 10 different sectors. If you want to test our model based on your custom data please choose tickers from here. The list of assets are as follows:
+We have backtested our strategy on 50 assets from 10 different sectors. If you want to test our model based on your custom data please choose tickers from here. The list of assets is as follows:
 
 | Industrials | Health Care | Information Technology | Financials | Materials | Consumer Staples | Energy | Communication Services | Utilities | Real Estate |
 |-------------|-------------|------------------------|------------|-----------|------------------|--------|-----------------------|-----------|-------------|
 | MMM         | ABT         | ADBE                   | AFL        | FMC       | BG               | TRGP   | DIS                   | AES       | ARE         |
 | AOS         | BAX         | AMD                    | BAC        | IFF       | MO               | VLO    | WBD                   | LNT       | BXP         |
-| BA          | BDX         | AAPL                   | BRK-B         | KLAC      | CPB              | WMB    | GOOGLE                | AEP       | CPT         |
-| AXON        | TECH        | CDNS                   | BX         | APD       | STZ              | APA    | FOX                  | AWK       | AMT         |
+| BA          | BDX         | AAPL                   | BRK-B      | KLAC      | CPB              | WMB    | GOOGLE                | AEP       | CPT         |
+| AXON        | TECH        | CDNS                   | BX         | APD       | STZ              | APA    | FOX                   | AWK       | AMT         |
 | CAT         | ALGN        | NVDA                   | COF        | CE        | WMT              | BKR    | EA                    | CEG       | CCI         |
 
 
@@ -174,5 +174,5 @@ Bollinger's Bands, our measuring guide  📏📈📊🔍
 LSTM whispers where profits reside  🤫💰💵🏠
 The ensemble dances with a symphony bright 🌟🎭💃🎶
 Forecasting markets, with endless sight 🌞📉📈🌜
---------------------> A Anonymous Quant
+--------------------> An Anonymous Quant
 ```
