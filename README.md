@@ -90,6 +90,8 @@ Follow these steps for a manual installation:
 5. **Interpret Results**: A `quantstats` report will be generated automatically at the end by `gs.plots(results)`.<br>
 Analyze the generated plots and results to assess the strategy's performance on the selected assets.
 
+N.B. If you don't want to customize any input parameters or data ingestion, you can directly run the notebook `run.ipynb` without any changes.
+
 ### 2. Docker Installation
 
 If you have Docker installed, you can use it to run the project to avoid setting the environment or installing dependencies:
@@ -105,11 +107,14 @@ If you have Docker installed, you can use it to run the project to avoid setting
 4. **Run the Docker Container**: Start a new Docker container with the image using the following command:<br>
 ```docker run -d -p 8888:8888 --name my_backtest_container ensemble-backtest-stockprice```
 
-5. **Get the Jupyter Notebook Token**: Run the following commands to get the Jupyter Notebook token:<br>
-```docker exec -it my_backtest_container /bin/bash```<br>
-```jupyter server list ```
+5. **Access Jupyter Notebook**: Open your web browser and go to `http://localhost:8888`. Paste the copied token when prompted. (If no token is required, you can skip step 6).
 
-6. **Access Jupyter Notebook**: Open your web browser and go to `http://localhost:8888`. Paste the copied token when prompted. (If no token is required, you can skip step 5).
+6. **Get the Jupyter Notebook Token**: Run the following commands to get the Jupyter Notebook token:<br>
+```docker exec -it my_backtest_container /bin/bash```<br>
+After that, run the following command inside from the container that you run:<br>
+```jupyter server list ```<br>
+It will show you a link with a token. Copy the token and paste it in the browser jupyter notebook prompt.
+
 
 From the Jupyter Notebook, run `run.ipynb` to start the project.
 
@@ -128,6 +133,8 @@ From the Jupyter Notebook, run `run.ipynb` to start the project.
     │
     ├── 📝 requirements.txt    <- List of of required python packages
     │
+    ├── 🐳 Dockerfile          <- Dockerfile for building the Docker image
+    │
     └── 📄 lstm_12_p50_ckp_13_24_e150.h5   <- LSTM model weights file
 --------
 
@@ -143,14 +150,14 @@ From the Jupyter Notebook, run `run.ipynb` to start the project.
     - Trained the model on S&P 500 data from 2013 to 2020 and tested it on data from 2023 to 2024. 📅
 - **Asset Categorization**: Backtested our strategy on 50 assets from 10 different sectors (2018-2022) to add diversification and evaluate its performance. Check [Asset Lists](#-asset-categories) or the  [Data](https://github.com/YeakubSadlil/Ensemble_backtesting_stock_market/blob/01acf517e821f63eaabbcf972c3fbc51a196a4b3/Data/sp50) section to see the list of assets.  
 - **Module Development**: Developed a module to generate signals (`generate_signals.py`), which is imported into the `run.ipynb`. It will return buy/sell/hold signals as 1, -1, 0 respectively.
-- **Backtesting**: Utilized the `zipline` library to backtest our strategy and evaluate the performance. 🧪
+- **Backtesting**: Utilized the `zipline` library to backtest our strategy and `quantstats` to evaluate the performance. 🧪
 - **Performance Analysis**: Our ensemble strategy is pretty close to the Bollinger Bands individual strategy, but it has outperformed the benchmark (S&P 500) in terms of CAGR, Sharpe Ratio, Portfolio Value while bactested with 50 assets from 2018-22.<br>
 It coudn't beat the benchmark while backtested with some single assets for out sample data but performed well for the ```AAPL``` stock.
 
 ## 🔮 Future Works
 - **Dataset Choosing**: We have trained the LSTM model on S&P 500 data, but can be created an market index with the 50 assets that we have used for backtesting.
 - **Order Strategy**: As the market is a bull market we went only long positions but with proper short selling strategy more profit can be generated.
-- **Fine-Tuning Models**: Continuously refine and optimize the Bollinger Bands window size and LSTM models for better prediction accuracy. The LSTM model underperforming while predicting based on past 100 and 150 days.LSTM may suffer from vanishing gradients and can be improved with ```Gated Recurrent Units (GRUs)``` or ```Bidirectional LSTMs```.🔧
+- **Fine-Tuning Models**: Continuously refine and optimize the Bollinger Bands window size and LSTM models for better prediction accuracy. The LSTM model underperforming while predicting based on past 100 and 150 days.LSTM may suffer from vanishing gradients and can be improved with `Attention mechanisms`, `Stacking more layers` or ```Bidirectional LSTMs``` etc.🔧
 - **Risk Management**: Implement risk management strategies to minimize potential losses like as stop loos and take profit.
 
 ## 📂 Asset Categories
