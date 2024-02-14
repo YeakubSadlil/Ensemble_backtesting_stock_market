@@ -12,13 +12,11 @@
 
 
 
-
-
 <h1 align="center">
   📈 Ensemble Strategy for Backtesting Stock Price
 </h1>
 <p align="center"> 
-<strong>This repository contains An Ensemble Strategy for Backtesting Stock Price, Combining Bollinger Bands and LSTM Models.</strong>
+<strong>This repository implements an ensemble strategy for backtesting stock price, Combining Bollinger Bands and LSTM Models.</strong>
 </p>
 
 <!-- <div align="right">
@@ -38,38 +36,11 @@
 ##  📚 Table of Contents
 
 - [ 📖 User Manual](#-user-manual)
-  - [ Setup](#setup)
-  - [ Install Dependencies](#install-dependencies)
-  - [ Data Ingestion](#data-ingestion)
-  - [ Running the Notebook](#️running-the-notebook)
-  - [ Interpreting Results](#interpreting-results)
 - [️ 🏗️ Project Structure](#️-project-structure)
 - [️ 🛠️ Our Approach](#️-our-approach)
-- [ 🔮 Future Works](#-future-works)
+- [ 🚀 Performance Analysis](#-performance-analysis)
+- [ 🔮 Drawbacks & Future Works](#-drawbacks--future-works)
 - [ 📂 Asset Categories](#-asset-categories)
-
-<!-- ## 📖 User Manual
-### 1. Manual Installation
-1. **🔧 Setup**: Clone or download, get a copy of this repository<br>
-```git clone https://github.com/YeakubSadlil/Ensemble_backtesting_stock_market.git```
-2. **🔨 Install Dependencies**: Install the required dependencies using the following command<br>
-make sure that you have `python 3.10` installed or create a new environment.<br>
-```pip install -r requirements.txt```
-3. **📥 Data Ingestion**: Ingest your own data with zipline (the strategy can accept multi assets).
-4. **🏃‍♂️ Running the Notebook**: Open the repo and run `run.ipynb` and customize your backtesting parameters stock symbols, time period, investment settings like amount and number of stocks to buy at each buy signal etc.
-5. **📊 Interpreting Results**: A ```quantstats``` report will be generated automatically at the end by ```gs.plots(results)``` .<br>
-Analyze the generated plots and results to assess the strategy's performance on the selected assets.
-
-### 2. Docker Installation
-1. **Prerequisites:** Verify you have `Docker` installed and running.
-1. **🔧 Setup**: Clone or download, get a copy of this repository
-2. **Build the Docker Image**: ```docker build -t ensemble-backtest-stockprice .```
-3. **Run the Docker Container**: ```docker run -d -p 8888:8888 --name my_backtest_container ensemble-backtest-stockprice```
-4. **Get the Jupyter Notebook Token**: ```docker exec -it my_backtest_container /bin/bash```<br>
-```jupyter server list ```
-5. **Access Jupyter Notebook**: Open your web browser and go to ```http://localhost:8888.``` Paste the copied token when prompted(If no token is required then skip the step)
-
-From the jupyter notebook run `run.ipynb`. -->
 
 ## 📖 User Manual
 
@@ -83,7 +54,7 @@ Follow these steps for a manual installation:
 2. **Install Dependencies**: Make sure you have `Python 3.10` installed. Then, install the required dependencies using the following command:<br>
 ```pip install -r requirements.txt```
 
-3. **Data Ingestion**: Ingest your own data with Zipline.Threre is a default data ingestion available on the notebook. Note that the strategy can accept multiple assets.
+3. **Data Ingestion**: Ingest your own data with Zipline.There is a default data ingestion available on the notebook. Note that the strategy can accept multiple assets.
 
 4. **Run the Notebook**: Open the `run.ipynb` file in the repository and customize your backtesting parameters such as stock symbols, time period, and investment settings like amount and number of stocks to buy at each buy signal.
 
@@ -92,7 +63,7 @@ Analyze the generated plots and results to assess the strategy's performance on 
 
 N.B. If you don't want to customize any input parameters or data ingestion, you can directly run the notebook `run.ipynb` without any changes.
 
-### 2. Docker Installation
+### 2. Installation Using Docker
 
 If you have Docker installed, you can use it to run the project to avoid setting the environment or installing dependencies:
 
@@ -113,7 +84,7 @@ If you have Docker installed, you can use it to run the project to avoid setting
 ```docker exec -it my_backtest_container /bin/bash```<br>
 After that, run the following command inside from the container that you run:<br>
 ```jupyter server list ```<br>
-It will show you a link with a token. Copy the token and paste it in the browser jupyter notebook prompt.
+It will show you a link with a token. Copy the token only from the link and paste it in the browser jupyter notebook prompt.
 
 
 From the Jupyter Notebook, run `run.ipynb` to start the project.
@@ -157,7 +128,7 @@ From the Jupyter Notebook, run `run.ipynb` to start the project.
 ![LSTM Model](./ML%20Models/lstm_12_p50_ckp_13_24_e150.keras.png)
 
 
-## Performance Analysis: 
+## 🚀 Performance Analysis
 Our ensemble strategy is pretty close to the Bollinger Bands individual strategy, but it has outperformed the benchmark (S&P 500) in terms of CAGR, Sharpe Ratio, Portfolio Value while bactested with 50 assets from 2018-22.<br>
 It coudn't beat the benchmark while backtested with some single assets for out sample data but performed well for the ```AAPL``` stock.
 - Ensemble Notebook: We tuned our ensemble model in Google Colab for faster training. The notebook is available [here](https://colab.research.google.com/drive/1O85HUaClIuqZwkVQjVrm8eyI1YPINQ29?usp=sharing).
@@ -176,18 +147,16 @@ It coudn't beat the benchmark while backtested with some single assets for out s
 | Avg. Drawdown | -2.18% | -2.79% | -2.79% |
 | Volatility (ann.) | 22.01% | 25.56% | 25.21% |
 | Calmar | 0.15 | 0.14 | 0.15 |
-| Beta | - | 1.02 | 0.99 |
-| Alpha | - | 0.02 | 0.03 |
-| Correlation | - | 87.43% | 86.79% |
-| Treynor Ratio | - | 50.14% | 54.52% |
 
-## 🔮 Future Works
+## 🔮 Drawbacks & Future Works
 - **Dataset Choosing**: We have trained the LSTM model on S&P 500 data, but can be created an market index with the 50 assets that we have used for backtesting.
 - **Order Strategy**: As the market is a bull market we went only long positions but with proper short selling strategy more profit can be generated.
 - **Fine-Tuning Models**: Continuously refine and optimize the Bollinger Bands window size and LSTM models for better prediction accuracy. The LSTM model underperforming while predicting based on past 100 and 150 days.LSTM may suffer from vanishing gradients and can be improved with `Attention mechanisms`, `Stacking more layers` or ```Bidirectional LSTMs``` etc.🔧
 - **Risk Management**: Implement risk management strategies to minimize potential losses like as stop loos and take profit.
 - **Meta-Labeling Strategy**: In his book Advances in Financial Machine Learning, Dr.Lopez de Prad describes a Meta-labeling technique that uses an array of new Ensemble learning techniques to enhance machine learning strategies. Hudson & Thames ,a financial research group, expanded on these techniques and showed some implementation ideas in a [youtube video.](https://youtu.be/1fYzABjsNFk?si=G6HPDBBNlsNotGk5)
 ## 📂 Asset Categories
+We have backtested our strategy on 50 assets from 10 different sectors. If you want to test our model based on your custom data please choose tickers from here. The list of assets are as follows:
+
 | Industrials | Health Care | Information Technology | Financials | Materials | Consumer Staples | Energy | Communication Services | Utilities | Real Estate |
 |-------------|-------------|------------------------|------------|-----------|------------------|--------|-----------------------|-----------|-------------|
 | MMM         | ABT         | ADBE                   | AFL        | FMC       | BG               | TRGP   | DIS                   | AES       | ARE         |
@@ -196,3 +165,14 @@ It coudn't beat the benchmark while backtested with some single assets for out s
 | AXON        | TECH        | CDNS                   | BX         | APD       | STZ              | APA    | FOX                  | AWK       | AMT         |
 | CAT         | ALGN        | NVDA                   | COF        | CE        | WMT              | BKR    | EA                    | CEG       | CCI         |
 
+
+## Summary
+```
+Data dances in time's rapid stream  💃🕺🌊⏳
+Patterns prediction, a trader's dream 🔮💰💤😴
+Bollinger's Bands, our measuring guide  📏📈📊🔍
+LSTM whispers where profits reside  🤫💰💵🏠
+The ensemble dances with a symphony bright 🌟🎭💃🎶
+Forecasting markets, with endless sight 🌞📉📈🌜
+--------------------> A Anonymous Quant
+```
