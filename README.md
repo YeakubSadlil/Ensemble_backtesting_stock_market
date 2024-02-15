@@ -16,25 +16,12 @@
   📈 Ensemble Strategy for Backtesting Stock Price
 </h1>
 <p align="center"> 
-<strong>This repository implements an ensemble strategy for backtesting stock price, Combining Bollinger Bands and LSTM Models.</strong>
+<strong>This repository implements an ensemble strategy for backtesting stock price, Combining Bollinger Bands and LSTM (Neural Network) Models.</strong>
 </p>
 
-<!-- <div align="right">
-  <details>
-    <summary><b>Technical Environment</b></summary>
-    <div align="right">
-      <img align="center" src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Blue_Python_3.8_Shield_Badge.svg" alt="python 3.8" height="25" width="70" />
-    </div>
-    <div align="right">
-      <img align="center" src="https://miro.medium.com/v2/resize:fit:1400/format:webp/0*7mcenkTaprqVx17y.jpg" alt="python 3.8" height="25" width="70" style="vertical-align: -18px;/>
-    </div>
-
-    
-  </details>
-</div> -->
 
 ##  📚 Table of Contents
-
+- [🛠️ How it works](#-how-it-works)
 - [ 📖 User Manual](#-user-manual)
 - [️ 🏗️ Project Structure](#️-project-structure)
 - [️ 🛠️ Our Approach](#️-our-approach)
@@ -42,11 +29,17 @@
 - [ 🔮 Drawbacks & Future Works](#-drawbacks--future-works)
 - [ 📂 Asset Categories](#-asset-categories)
 
+## 🛠️ How it works
+There are two important files in the repository 📁. 
+- The `run.ipynb` is the main file that the user can run 🏃‍♂️ to backtest the ensemble strategy. 
+- The `generate_signals.py` file is a module that generates buy/sell/hold signals as 1,-1,0 respectively 👍👎🔁 and returns them to the notebook. The user can customize the input parameters.
+- The notebook will generate a `quantstats` full report 📊 at the end to evaluate the performance of the strategy 🔍.
+
 ## 📖 User Manual
 
 ### 1. Manual Installation
 
-Follow these steps for a manual installation:
+Follow the steps for a manual installation: (**You can run the project only with the 3 steps (steps 1,2,4)** )
 
 1. **Clone the Repository**: Get a copy of this repository on your local machine with the following command:<br>
 ```git clone https://github.com/YeakubSadlil/Ensemble_backtesting_stock_market.git```
@@ -59,7 +52,7 @@ Follow these steps for a manual installation:
 4. **Run the Notebook**: Open the `run.ipynb` file in the repository and customize your backtesting parameters such as stock symbols, time period, and investment settings like the amount and number of stocks to buy at each buy signal.
 
 5. **Interpret Results**: A `quantstats` report will be generated automatically at the end by `gs.plots(results)`.<br>
-Analyze the generated plots and results to assess the strategy's performance on the selected assets.
+Analyze the generated plots and results to assess the strategy's performance on your selected or default assets.
 
 N.B. If you don't want to customize any input parameters or data ingestion, you can directly run the notebook `run.ipynb` without any changes.
 
