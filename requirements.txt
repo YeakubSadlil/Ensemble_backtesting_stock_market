@@ -6,6 +6,8 @@ tensorflow==2.15.0
 keras==2.15.0
 matplotlib==3.8.2
 matplotlib-inline==0.1.6
-notebook
-zipline-reloaded==3.0.3
+notebook==7.0.6
+# zipline has dependency on 'Ta-lib', but requires manual steps as outlined in instructions
+# or install Ta-lib manaully from here https://zipline.ml4trading.io/install.html
+zipline-reloaded==3.0.3 
 scikit-learn==1.3.2

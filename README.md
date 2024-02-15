@@ -54,7 +54,9 @@ Follow the steps for a manual installation: (**You can run the project only with
 5. **Interpret Results**: A `quantstats` report will be generated automatically at the end by `gs.plots(results)`.<br>
 Analyze the generated plots and results to assess the strategy's performance on your selected or default assets.
 
-N.B. If you don't want to customize any input parameters or data ingestion, you can directly run the notebook `run.ipynb` without any changes.
+N.B. 
+- If you don't want to customize any input parameters or data ingestion, you can directly run the notebook `run.ipynb` without any changes.<br>
+- If you face any issues in step 2 associated with `ta-lib`, please install it first, [doc](https://zipline.ml4trading.io/install.html)
 
 ### 2. Installation Using Docker
 
