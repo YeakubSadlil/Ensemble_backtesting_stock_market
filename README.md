@@ -21,7 +21,7 @@
 
 
 ##  📚 Table of Contents
-- [ 🛠️ How it works](#-how-it-works)
+- [ 🛠️ How it works](#how-it-works)
 - [ 📖 User Manual](#-user-manual)
 - [️ 🏗️ Project Structure](#️-project-structure)
 - [️ 🛠️ Our Approach](#️-our-approach)
@@ -29,7 +29,7 @@
 - [ 🔮 Drawbacks & Future Works](#-drawbacks--future-works)
 - [ 📂 Asset Categories](#-asset-categories)
 
-## 🛠️ How it works
+## How it Works
 There are two important files in the repository 📁. 
 - The `run.ipynb` is the main file that the user can run 🏃‍♂️ to backtest the ensemble strategy. 
 - The `generate_signals.py` file is a module that generates buy/sell/hold signals 👍👎🔁  as 1,-1,0 respectively and returns them to the notebook. The user can customize the input parameters.
@@ -54,7 +54,7 @@ Follow the steps for a manual installation: (**You can run the project only with
 5. **Interpret Results**: A `quantstats` report will be generated automatically at the end by `gs.plots(results)`.<br>
 Analyze the generated plots and results to assess the strategy's performance on your selected or default assets.
 
-N.B. 
+**N.B.**
 - If you don't want to customize any input parameters or data ingestion, you can directly run the notebook `run.ipynb` without any changes.<br>
 - If you face any issues in step 2 associated with `ta-lib`, please install it first, [doc](https://zipline.ml4trading.io/install.html)
 
@@ -86,7 +86,7 @@ From the Jupyter Notebook, run `run.ipynb` to start the project.
 
 
 ### 3. Google Colab
-- If you don't want to install anything on your local machine or you haven't have enough time to set up the environment, you can run the project in Google Colab.<br>
+- If you don't want to install anything on your local machine or you haven't have enough time to set up the environment, you can run the project on Google Colab.<br>
 - Please go to the [Colab Notebook](https://colab.research.google.com/drive/1O85HUaClIuqZwkVQjVrm8eyI1YPINQ29?usp=sharing) and follow the instructions there. After uploading the necessary files you are ready to go just with a single click 'Run All'.
 ## 🏗️ Project Structure
 
@@ -108,14 +108,19 @@ From the Jupyter Notebook, run `run.ipynb` to start the project.
 --------
 
 ## 🛠️ Our Approach
-
 - **Ensemble Strategy**: We combined Bollinger Bands and LSTM models to predict stock prices and generate signals.
     - When the LSTM model predicts that tomorrow's stock price is higher than the current price and the Bollinger's lower band is also higher than the current price, then we generate a buy signal (Long Position)
     - When the LSTM model predicts that tomorrow's stock price is lower than the current price and Bollinger's upper band is also lower than the current price, then we generate a sell signal.
     - Otherwise, we generate a hold signal.
+    - We have chosen to go only for long positions as the market is a bull market.
+- **Tuning Models**:
+    - We have tried trend following and mean reversion strategies with different technical indicators like `MACD, RSI, Bollinger Bands`, etc. and checked their individual performance. 
+    - Then we combined the best performing strategies with `LSTM` to create an ensemble strategy.
+    - We have found that the ensemble strategy is performing better than the individual strategies compared to each other and benchmark S&P500.
+    - We have also tested the In Sample and Out Sample performance and found that the ensemble is performing better. Check all test notebooks in the `ML Models` folder.
 - **Bollinger Bands**: Utilized the Bollinger Bands model to generate buy/sell signals based on the stock's price volatility with a default window of 20 days.
 - **LSTM Model**: Developed an LSTM model to predict the stock price of the next day based on the previous 50 days of stock prices. 
-    - Used it as a filter with Bollinger Bands to generate signals.
+    - Used it as a filter with Bollinger Bands to generate signals. The reason behind that is predicted stock price was higher than the current price during downtrends and lower during uptrends.
     - Trained the model on S&P 500 data from 2013 to 2020 and tested it on data from 2023 to 2024. 📅
 - **Asset Categorization**: Backtested our strategy on 50 assets from 10 different sectors (2018-2022) to add diversification and evaluate its performance. Check [Asset Lists](#-asset-categories) or the  [Data](https://github.com/YeakubSadlil/Ensemble_backtesting_stock_market/blob/01acf517e821f63eaabbcf972c3fbc51a196a4b3/Data/sp50) section to see the list of assets.  
 - **Module Development**: Developed a module to generate signals (`generate_signals.py`), which is imported into the `run.ipynb`. It will return buy/sell/hold signals as 1, -1, 0 respectively.
@@ -128,8 +133,10 @@ From the Jupyter Notebook, run `run.ipynb` to start the project.
 
 ## 🚀 Performance Analysis
 Our ensemble strategy is pretty close to the Bollinger Bands individual strategy, but it has outperformed the benchmark (S&P 500) in terms of CAGR, Sharpe Ratio, Portfolio Value while bactested with 50 assets from 2018-22.<br>
-It coudn't beat the benchmark while backtested with some single assets for out sample data but performed well for the ```AAPL``` stock.
-- Ensemble Notebook: We tuned our ensemble model in Google Colab for faster training. The notebook is available [here](https://colab.research.google.com/drive/1O85HUaClIuqZwkVQjVrm8eyI1YPINQ29?usp=sharing).
+- It couldn't beat the benchmark while backtested with some single assets for out sample data but performed well for the ```AAPL``` stock.<br>
+- Although the performance was better than Benchmark when going long only in a bull condition, the strategy was suffering when there were high drawdowns which indicates that the strategy is not robust enough to handle the market downturns.
+
+Ensemble Notebook: We tuned our ensemble model in Google Colab for faster training. The notebook is available [here](https://colab.research.google.com/drive/1O85HUaClIuqZwkVQjVrm8eyI1YPINQ29?usp=sharing) or check the `Test_ensemble_InSample.ipynb` in the folder `ML Models`.
 
 **The table below shows the performance comparison on in-sample data**
 | Metric | Benchmark | Bollinger Bands | LSTM + Bollinger Ensemble |
@@ -145,6 +152,11 @@ It coudn't beat the benchmark while backtested with some single assets for out s
 | Avg. Drawdown | -2.18% | -2.79% | -2.79% |
 | Volatility (ann.) | 22.01% | 25.56% | 25.21% |
 | Calmar | 0.15 | 0.14 | 0.15 |
+
+
+**The plot below shows the performance of the ensemble strategy**
+
+<img src="./ML%20Models/performance.jpg" height="400">
 
 ## 🔮 Drawbacks & Future Works
 - **Dataset Choosing**: We have trained the LSTM model on S&P 500 data, but a market index can be created with the 50 assets we have used for backtesting.
@@ -166,11 +178,11 @@ We have backtested our strategy on 50 assets from 10 different sectors. If you w
 
 ## Summary
 ```
-Data dances in time's rapid stream  💃🕺🌊⏳
-Patterns prediction, a trader's dream 🔮💰💤😴
-Bollinger's Bands, our measuring guide  📏📈📊🔍
-LSTM whispers where profits reside  🤫💰💵🏠
-The ensemble dances with a symphony bright 🌟🎭💃🎶
-Forecasting markets, with endless sight 🌞📉📈🌜
---------------------> An Anonymous Quant
+                                      Data dances in time's rapid stream  💃🕺🌊⏳
+                                      Patterns prediction, a trader's dream 🔮💰💤😴
+                                      Bollinger's Bands, our measuring guide  📏📈📊🔍
+                                      LSTM whispers where profits reside  🤫💰💵🏠
+                                      The ensemble dances with a symphony bright 🌟🎭💃🎶
+                                      Forecasting markets, with endless sight  🧐📉📈👀
+                                      --------------------> An Anonymous Quant
 ```
