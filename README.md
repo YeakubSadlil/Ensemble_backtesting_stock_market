@@ -21,7 +21,7 @@
 
 
 ##  📚 Table of Contents
-- [🛠️ How it works](#-how-it-works)
+- [ 🛠️ How it works](#-how-it-works)
 - [ 📖 User Manual](#-user-manual)
 - [️ 🏗️ Project Structure](#️-project-structure)
 - [️ 🛠️ Our Approach](#️-our-approach)
@@ -32,8 +32,8 @@
 ## 🛠️ How it works
 There are two important files in the repository 📁. 
 - The `run.ipynb` is the main file that the user can run 🏃‍♂️ to backtest the ensemble strategy. 
-- The `generate_signals.py` file is a module that generates buy/sell/hold signals as 1,-1,0 respectively 👍👎🔁 and returns them to the notebook. The user can customize the input parameters.
-- The notebook will generate a `quantstats` full report 📊 at the end to evaluate the performance of the strategy 🔍.
+- The `generate_signals.py` file is a module that generates buy/sell/hold signals 👍👎🔁  as 1,-1,0 respectively and returns them to the notebook. The user can customize the input parameters.
+- The notebook will generate a `quantstats` full report 📊 at the end to evaluate the performance of the strategy.
 
 ## 📖 User Manual
 
@@ -83,6 +83,9 @@ It will show you a link with a token. Copy the token only from the link and past
 From the Jupyter Notebook, run `run.ipynb` to start the project.
 
 
+### 3. Google Colab
+- If you don't want to install anything on your local machine or you haven't have enough time to set up the environment, you can run the project in Google Colab.<br>
+- Please go to the [Colab Notebook](https://colab.research.google.com/drive/1O85HUaClIuqZwkVQjVrm8eyI1YPINQ29?usp=sharing) and follow the instructions there. After uploading the necessary files you are ready to go just with a single click 'Run All'.
 ## 🏗️ Project Structure
 
     ├── 📂 Data                <- Folder for all the data used for model training
